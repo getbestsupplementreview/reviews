@@ -10,6 +10,8 @@ I wanted to understand what was actually inside the bottle, how much scientific 
 
 ## YU Sleep: What First Caught My Attention?
 
+![yu sleep supplement](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZYgb-WNb7asw4erzw39zIogs4CgmLbDDWHITSELET8g&s=10)
+
 The first detail I noticed was the combination of ingredients. Rather than relying on melatonin alone, YU Sleep brings together several compounds associated with relaxation and sleep regulation.
 
 Its liquid drops format may appeal to adults who dislike swallowing capsules. The company also advertises a 60-day money-back guarantee.
