@@ -415,10 +415,11 @@ function formatTitle(slug) {
         .join(" ");
 }
 
+
 async function loadReviews() {
     const apiUrl =
         `https://api.github.com/repos/${CONFIG.owner}/` +
-        `${CONFIG.repository}/contents/${CONFIG.directory}?ref=${CONFIG.branch}`;
+        `${CONFIG.repository}/git/trees/${CONFIG.branch}?recursive=1`;
 
     try {
         const response = await fetch(apiUrl, {
@@ -428,50 +429,39 @@ async function loadReviews() {
         });
 
         if (!response.ok) {
-            throw new Error(
-                `GitHub API returned HTTP ${response.status}`
-            );
+            throw new Error(`GitHub API error: ${response.status}`);
         }
 
         const data = await response.json();
 
-        const directories = data.filter(item =>
-            item.type === "dir" &&
-            !item.name.startsWith(".")
-        );
+        if (data.truncated) {
+            throw new Error("GitHub repository tree is truncated.");
+        }
 
-        // Check each directory for index.html.
-        const checks = await Promise.all(
-            directories.map(async folder => {
-                const fileUrl =
-                    `https://api.github.com/repos/${CONFIG.owner}/` +
-                    `${CONFIG.repository}/contents/${CONFIG.directory}/` +
-                    `${encodeURIComponent(folder.name)}/index.html?ref=${CONFIG.branch}`;
+        const prefix = CONFIG.directory + "/";
 
-                try {
-                    const result = await fetch(fileUrl, {
-                        headers: {
-                            "Accept": "application/vnd.github+json"
-                        }
-                    });
+        const slugs = new Set();
 
-                    return result.ok ? folder.name : null;
-                } catch {
-                    return null;
-                }
-            })
-        );
+        data.tree.forEach(item => {
+            if (item.type !== "blob") return;
+            if (!item.path.startsWith(prefix)) return;
 
-        reviews = checks
-            .filter(Boolean)
+            const match = item.path.match(
+                /^reviews\/([^/]+)\/index\.html$/i
+            );
+
+            if (match) {
+                slugs.add(match[1]);
+            }
+        });
+
+        reviews = Array.from(slugs)
             .map(slug => ({
                 slug,
                 title: formatTitle(slug),
                 url: `${CONFIG.siteUrl}/${CONFIG.directory}/${encodeURIComponent(slug)}/`
             }))
-            .sort((a, b) =>
-                a.title.localeCompare(b.title)
-            );
+            .sort((a, b) => a.title.localeCompare(b.title));
 
         renderReviews();
 
@@ -479,17 +469,14 @@ async function loadReviews() {
             ? ""
             : "No published reviews were found.";
 
-        reviewCount.textContent =
-            `${reviews.length} Reviews`;
+        reviewCount.textContent = `${reviews.length} Reviews`;
 
     } catch (error) {
         console.error("Unable to load reviews:", error);
 
         reviewCount.textContent = "Unavailable";
-
         status.textContent =
-            "Unable to load reviews right now. Please try again later.";
-
+            "Unable to load reviews. Please try again later.";
         status.classList.add("error");
     }
 }
