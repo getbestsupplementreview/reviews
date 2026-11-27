@@ -3,97 +3,534 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Best Supplement Reviews</title>
-<meta name="description" content="Browse all 65 in-depth reviews from Get Best Supplement Reviews, including supplements, books, programs and more.">
+
+<title>Supplement Reviews & Buying Guides | Get Best Supplement Reviews</title>
+
+<meta name="description" content="Explore independent supplement reviews, product comparisons, ingredient guides and buying insights. Discover detailed reviews of popular supplements, health products and wellness programs.">
+
+<meta name="robots" content="index, follow">
+<meta name="author" content="Get Best Supplement Reviews">
+<meta name="theme-color" content="#153c30">
+
+<link rel="canonical" href="https://getbestsupplementreviews.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Supplement Reviews & Buying Guides | Get Best Supplement Reviews">
+<meta property="og:description" content="Explore independent supplement reviews, product comparisons and wellness buying guides.">
+<meta property="og:url" content="https://getbestsupplementreviews.github.io/">
+
 <style>
-body{font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #222; line-height: 1.65; margin: 0; background: #faf8f4}
-.wrap{max-width:760px;margin:0 auto;padding:24px 18px 60px}
-h1{font-size:30px;line-height:1.25;color:#14342b}
-h2{font-size:23px;color:#14342b;margin-top:36px;border-bottom:2px solid #d8e6df;padding-bottom:6px}
-p{font-size:16px}
-ul{list-style:none;padding:0;margin:14px 0}
-li{margin:10px 0}
-a{color:#1d7a4f}
-a:hover{color:#16603f}
-.disclosure{background:#fff7e0;border:1px solid #e5cf8a;padding:10px 14px;font-size:13.5px;border-radius:6px}
-footer{margin-top:44px;font-size:12.5px;color:#666;border-top:1px solid #ddd;padding-top:14px}
+:root {
+    --green: #174b38;
+    --green-dark: #103628;
+    --green-light: #eaf3ed;
+    --accent: #b18b50;
+    --cream: #faf9f5;
+    --white: #ffffff;
+    --text: #28352e;
+    --muted: #718078;
+    --border: #e5eae5;
+    --shadow: 0 8px 30px rgba(24, 57, 42, .06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 55px 22px 65px;
+}
+
+/* HEADER */
+
+.hero {
+    background: linear-gradient(135deg, #153c30, #28644a);
+    color: white;
+    border-radius: 18px;
+    padding: 44px 38px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+.eyebrow {
+    display: inline-block;
+    color: #e6d1a5;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: clamp(30px, 5vw, 43px);
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    margin: 0 0 15px;
+}
+
+.hero p {
+    max-width: 650px;
+    font-size: 16px;
+    color: #e0ebe4;
+    margin: 0;
+}
+
+/* MAIN CONTENT */
+
+.panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--green);
+    font-size: 25px;
+    line-height: 1.3;
+    margin: 0;
+    font-weight: 750;
+    letter-spacing: -.4px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 7px 0 0;
+}
+
+.count {
+    background: var(--green-light);
+    color: var(--green);
+    padding: 7px 13px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* SEARCH */
+
+.search-wrap {
+    margin: 22px 0 20px;
+}
+
+.search {
+    width: 100%;
+    padding: 14px 17px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fcfdfb;
+    font-size: 15px;
+    color: var(--text);
+    outline: none;
+    transition: .2s;
+}
+
+.search:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(23, 75, 56, .09);
+}
+
+/* REVIEW LIST */
+
+.review-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.review-list li {
+    margin: 0;
+    min-width: 0;
+}
+
+.review-list a {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 56px;
+    padding: 13px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 600;
+    transition: all .2s ease;
+}
+
+.review-list a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    min-width: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.review-list a::after {
+    content: "→";
+    margin-left: auto;
+    color: #91a398;
+    font-size: 17px;
+    transition: transform .2s;
+}
+
+.review-list a:hover {
+    background: var(--green-light);
+    border-color: #c9ddcf;
+    transform: translateY(-2px);
+}
+
+.review-list a:hover::after {
+    transform: translateX(4px);
+}
+
+.status {
+    text-align: center;
+    padding: 25px 10px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.status.error {
+    color: #a13c35;
+}
+
+/* DISCLOSURE */
+
+.disclosure {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: #fff9e9;
+    border: 1px solid #eadbb5;
+    border-radius: 11px;
+    font-size: 13px;
+    color: #665735;
+}
+
+.disclosure strong {
+    color: #59451e;
+}
+
+footer {
+    text-align: center;
+    margin-top: 38px;
+    padding-top: 23px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12.5px;
+}
+
+footer p {
+    margin: 7px 0;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .wrap {
+        padding: 25px 14px 40px;
+    }
+
+    .hero {
+        padding: 32px 23px;
+        border-radius: 13px;
+    }
+
+    .panel {
+        padding: 21px 16px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .review-list {
+        grid-template-columns: 1fr;
+    }
+
+    .review-list a {
+        min-height: 52px;
+    }
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
-<h1>Get Best Supplement Reviews</h1>
-<p>Browse our 65 in-depth reviews below, listed alphabetically.</p>
-<h2>All Reviews</h2>
-<ul>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/advanced-amino-formula/">Advanced Amino Formula Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/advanced-collagen-plus/">Advanced Collagen Plus Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/advanced-joint-support/">Advanced Joint Support Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/advanced-memory-formula/">Advanced Memory Formula Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/advanced-mitochondrial-formula/">Advanced Mitochondrial Formula Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/advanced-muscle-plus/">Advanced Muscle Plus Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/advanced-prostate-formula/">Advanced Prostate Formula Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/advanced-vision-formula/">Advanced Vision Formula Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/alpha-drive-24/">Alpha Drive 24 Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/audifort/">Audifort Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/berberine/">Berberine Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/circo2/">CircO2 Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/citrusburn/">CitrusBurn Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/denta-biome/">Denta Biome Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/echoxen/">EchoXen Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/encyclopedia-of-power-foods/">Encyclopedia of Power Foods Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/energy-revolution/">Energy Revolution Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/femicore/">FemiCore Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/finessa/">Finessa Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/genius-wave/">Genius Wave Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/gluco6/">Gluco6 Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/goliath-xl-10/">Goliath XL 10 Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/herbal-remedy-companion/">Herbal Remedy Companion Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/hgh-activator/">HGH Activator Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/igenics/">iGenics Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/ikaria-juice/">Ikaria Juice Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/integrative-digestive-formula/">Integrative Digestive Formula Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/java-burn/">Java Burn Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/joint-genesis/">Joint Genesis Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/jointeternal/">JointEternal Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/josephs-well/">Joseph's Well Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/keto-desserts/">Keto Desserts Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/keyslim-drops/">Keyslim Drops Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/lymph-tonic/">Lymph Tonic Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/medicinal-garden-kit/">Medicinal Garden Kit Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/memory-wave/">Memory Wave Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/metanail/">MetaNail Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/mitolyn/">Mitolyn Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/nerve-fresh/">Nerve Fresh Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/neuro-energizer/">Neuro-Energizer Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/neuro-prime/">Neuro-Prime Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/neuro-serge/">Neuro-Serge Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/nitric-boost-ultra/">Nitric Boost Ultra Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/pep-tonic/">Pep Tonic Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/pineal-guardian/">Pineal Guardian Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/pinealxt/">PinealXT Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/prime-perform/">Prime Perform Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/prodentim/">ProDentim Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/prosta-peak/">Prosta Peak Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/prostavive/">ProstaVive Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/provadent/">ProVadent Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/quietum-plus/">Quietum Plus Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/sleeplean/">SleepLean Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/smoothie-diet/">Smoothie Diet Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/spartamax/">SpartaMax Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/tedswoodworking/">TedsWoodworking Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/the-brain-song/">The Brain Song Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/the-lost-superfoods/">The Lost Superfoods Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/thyrafemme-balance/">Thyrafemme Balance Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/ultimate-keto-meal-plan/">Ultimate Keto Meal Plan Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/vertigenics/">Vertigenics Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/visiflora/">VisiFlora Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/water-freedom-system/">Water Freedom System Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/wealth-signal/">Wealth Signal Reviews</a></li>
-<li><a href="https://bestreviews-guide.github.io/reviews/review/yu-sleep/">Yu Sleep Reviews</a></li>
-</ul>
-<footer>
-<p><strong>Disclaimer:</strong> This site is an independent affiliate review site, not the official website of any product listed. Statements about products have not been evaluated by the Food and Drug Administration.</p></footer>
-<p><strong>Affiliate Disclosure:</strong> This is an independent review site. It contains affiliate links, which means we may earn a commission if you buy through them — at no extra cost to you.</p>
-</div>
+
+<main class="wrap">
+
+    <header class="hero">
+        <span class="eyebrow">Independent Product Research</span>
+
+        <h1>Supplement Reviews &amp; Buying Guides</h1>
+
+        <p>
+            Explore independent reviews, product insights,
+            ingredient information and wellness buying guides.
+            Find detailed information to help you make more
+            informed purchasing decisions.
+        </p>
+    </header>
+
+    <section class="panel" aria-labelledby="reviews-heading">
+
+        <div class="section-heading">
+            <div>
+                <h2 id="reviews-heading">All Supplement Reviews</h2>
+                <p class="subtitle">
+                    Browse our complete collection of product reviews,
+                    organized alphabetically.
+                </p>
+            </div>
+
+            <span class="count" id="review-count">Loading...</span>
+        </div>
+
+        <div class="search-wrap">
+            <input
+                type="search"
+                class="search"
+                id="review-search"
+                placeholder="Search supplement reviews..."
+                aria-label="Search supplement reviews"
+            >
+        </div>
+
+        <ul class="review-list" id="review-list">
+        </ul>
+
+        <div class="status" id="status" aria-live="polite">
+            Loading supplement reviews...
+        </div>
+
+    </section>
+
+    <section class="disclosure">
+        <strong>Disclaimer:</strong>
+        This website is an independent affiliate review resource
+        and is not affiliated with or endorsed by the manufacturers
+        of the products reviewed. Information is provided for
+        educational purposes only. Statements about dietary
+        supplements have not been evaluated by the U.S. Food
+        and Drug Administration. Products are not intended to
+        diagnose, treat, cure or prevent any disease.
+    </section>
+
+    <footer>
+        <p>
+            <strong>Affiliate Disclosure:</strong>
+            We may earn a commission when you purchase through
+            links on this website, at no additional cost to you.
+        </p>
+
+        <p>
+            © <span id="year"></span>
+            Get Best Supplement Reviews. All rights reserved.
+        </p>
+    </footer>
+
+</main>
+
+<script>
+const CONFIG = {
+    owner: "getbestsupplementreviews",
+    repository: "getbestsupplementreviews.github.io",
+    branch: "main",
+    directory: "reviews",
+    siteUrl: "https://getbestsupplementreviews.github.io"
+};
+
+const reviewList = document.getElementById("review-list");
+const reviewCount = document.getElementById("review-count");
+const status = document.getElementById("status");
+const searchInput = document.getElementById("review-search");
+
+let reviews = [];
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+function formatTitle(slug) {
+    const specialNames = {
+        "igenics": "iGenics",
+        "pinealxt": "PinealXT",
+        "prodentim": "ProDentim",
+        "provadent": "ProVadent",
+        "femicore": "FemiCore",
+        "visiflora": "VisiFlora",
+        "metanail": "MetaNail",
+        "circo2": "CircO2",
+        "echoxen": "EchoXen",
+        "goliath-xl-10": "Goliath XL 10",
+        "tedswoodworking": "TedsWoodworking"
+    };
+
+    if (specialNames[slug]) {
+        return specialNames[slug];
+    }
+
+    return slug
+        .split("-")
+        .map(word =>
+            word.charAt(0).toUpperCase() + word.slice(1)
+        )
+        .join(" ");
+}
+
+async function loadReviews() {
+    const apiUrl =
+        `https://api.github.com/repos/${CONFIG.owner}/` +
+        `${CONFIG.repository}/contents/${CONFIG.directory}?ref=${CONFIG.branch}`;
+
+    try {
+        const response = await fetch(apiUrl, {
+            headers: {
+                "Accept": "application/vnd.github+json"
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(
+                `GitHub API returned HTTP ${response.status}`
+            );
+        }
+
+        const data = await response.json();
+
+        const directories = data.filter(item =>
+            item.type === "dir" &&
+            !item.name.startsWith(".")
+        );
+
+        // Check each directory for index.html.
+        const checks = await Promise.all(
+            directories.map(async folder => {
+                const fileUrl =
+                    `https://api.github.com/repos/${CONFIG.owner}/` +
+                    `${CONFIG.repository}/contents/${CONFIG.directory}/` +
+                    `${encodeURIComponent(folder.name)}/index.html?ref=${CONFIG.branch}`;
+
+                try {
+                    const result = await fetch(fileUrl, {
+                        headers: {
+                            "Accept": "application/vnd.github+json"
+                        }
+                    });
+
+                    return result.ok ? folder.name : null;
+                } catch {
+                    return null;
+                }
+            })
+        );
+
+        reviews = checks
+            .filter(Boolean)
+            .map(slug => ({
+                slug,
+                title: formatTitle(slug),
+                url: `${CONFIG.siteUrl}/${CONFIG.directory}/${encodeURIComponent(slug)}/`
+            }))
+            .sort((a, b) =>
+                a.title.localeCompare(b.title)
+            );
+
+        renderReviews();
+
+        status.textContent = reviews.length
+            ? ""
+            : "No published reviews were found.";
+
+        reviewCount.textContent =
+            `${reviews.length} Reviews`;
+
+    } catch (error) {
+        console.error("Unable to load reviews:", error);
+
+        reviewCount.textContent = "Unavailable";
+
+        status.textContent =
+            "Unable to load reviews right now. Please try again later.";
+
+        status.classList.add("error");
+    }
+}
+
+function renderReviews() {
+    const query = searchInput.value
+        .trim()
+        .toLowerCase();
+
+    const filtered = reviews.filter(review =>
+        review.title.toLowerCase().includes(query) ||
+        review.slug.toLowerCase().includes(query)
+    );
+
+    reviewList.innerHTML = "";
+
+    filtered.forEach(review => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+
+        link.href = review.url;
+        link.textContent = `${review.title} Reviews`;
+
+        li.appendChild(link);
+        reviewList.appendChild(li);
+    });
+
+    if (reviews.length) {
+        reviewCount.textContent =
+            `${filtered.length} of ${reviews.length} Reviews`;
+    }
+
+    status.textContent = filtered.length
+        ? ""
+        : "No matching reviews found.";
+}
+
+searchInput.addEventListener("input", renderReviews);
+
+loadReviews();
+</script>
+
 </body>
 </html>
