@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supplement Reviews &amp; Buying Guides | Get Best Supplement Reviews</title>
+<meta name="description" content="Browse independent supplement reviews, product research, ingredient information and wellness buying guides. Explore our complete collection of supplement reviews.">
+<meta name="robots" content="index,follow">
+<meta name="author" content="Get Best Supplement Reviews">
+<meta name="theme-color" content="#153c30">
+<link rel="canonical" href="https://getbestsupplementreview.github.io/reviews/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Supplement Reviews &amp; Buying Guides | Get Best Supplement Reviews">
+<meta property="og:description" content="Explore independent supplement reviews, ingredient information and wellness buying guides.">
+<meta property="og:url" content="https://getbestsupplementreview.github.io/reviews/">
+<style>
+:root{--green:#174b38;--dark:#103628;--light:#eaf3ed;--gold:#b18b50;--cream:#faf9f5;--white:#fff;--text:#28352e;--muted:#718078;--border:#e5eae5;--shadow:0 8px 30px rgba(24,57,42,.06)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--cream);color:var(--text);line-height:1.7}a{color:inherit;text-decoration:none}.wrap{max-width:960px;margin:0 auto;padding:48px 20px 65px}
+.hero{background:linear-gradient(135deg,#153c30,#28644a);color:#fff;border-radius:18px;padding:42px 36px;margin-bottom:26px;box-shadow:var(--shadow)}.eyebrow{display:inline-block;color:#e6d1a5;font-size:12px;font-weight:750;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}h1{font-size:clamp(30px,5vw,43px);line-height:1.2;letter-spacing:-1px;margin:0 0 14px;font-weight:800}.hero p{max-width:680px;color:#e0ebe4;font-size:15px;margin:0}
+.panel{background:#fff;border:1px solid var(--border);border-radius:16px;padding:29px;box-shadow:var(--shadow)}.section-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}h2{font-size:25px;line-height:1.3;color:var(--green);margin:0;font-weight:750}.subtitle{font-size:14px;color:var(--muted);margin:6px 0 0}.count{background:var(--light);color:var(--green);padding:7px 13px;border-radius:30px;font-size:13px;font-weight:750;white-space:nowrap}
+.search-wrap{margin:20px 0}.search{width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:10px;background:#fcfdfb;font-size:15px;color:var(--text);outline:none}.search:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(23,75,56,.09)}.review-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.review-list li{margin:0;min-width:0}.review-list a{display:flex;align-items:center;gap:11px;min-height:55px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--green);font-size:14px;font-weight:650;transition:.2s}.review-list a:before{content:"";width:7px;height:7px;min-width:7px;border-radius:50%;background:var(--gold)}.review-list a:after{content:"→";margin-left:auto;color:#91a398;font-size:17px}.review-list a:hover{background:var(--light);border-color:#c9ddcf;transform:translateY(-2px)}
+.status{text-align:center;padding:22px 10px;color:var(--muted);font-size:14px}.status.error{color:#a13c35}.retry{display:inline-block;margin-top:10px;padding:9px 16px;border:0;border-radius:8px;background:var(--green);color:white;font-weight:700;cursor:pointer}.disclosure{margin-top:24px;padding:17px 19px;background:#fff9e9;border:1px solid #eadbb5;border-radius:11px;font-size:13px;color:#665735}footer{text-align:center;margin-top:36px;padding-top:22px;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+@media(max-width:600px){.wrap{padding:24px 13px 40px}.hero{padding:30px 22px;border-radius:13px}.panel{padding:21px 16px}.review-list{grid-template-columns:1fr}h2{font-size:22px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="hero"><span class="eyebrow">Independent Product Research</span><h1>Supplement Reviews &amp; Buying Guides</h1><p>Explore independent supplement reviews, product insights, ingredient information and wellness buying guides. Browse our growing collection and compare the information that matters before making a purchase.</p></header>
+<section class="panel" aria-labelledby="reviews-heading">
+<div class="section-heading"><div><h2 id="reviews-heading">All Supplement Reviews</h2><p class="subtitle">Browse published reviews alphabetically or search by product name.</p></div><span class="count" id="review-count">Loading…</span></div>
+<div class="search-wrap"><input id="review-search" class="search" type="search" placeholder="Search supplement reviews…" aria-label="Search supplement reviews"></div>
+<ul class="review-list" id="review-list"></ul>
+<div class="status" id="status" aria-live="polite">Connecting to the public GitHub repository…</div>
+</section>
+<section class="disclosure"><strong>Disclaimer:</strong> This website provides independent informational content and is not the official website of any product listed. Supplement statements have not been evaluated by the U.S. Food and Drug Administration. Products are not intended to diagnose, treat, cure or prevent any disease.<br><br><strong>Affiliate Disclosure:</strong> This website may contain affiliate links. We may earn a commission from qualifying purchases at no additional cost to you. Affiliate relationships do not determine our editorial opinions.</section>
+<footer><p><strong>Get Best Supplement Reviews</strong></p><p>Independent Supplement Reviews &amp; Buying Guides</p><p>© <span id="year"></span> Get Best Supplement Reviews. All rights reserved.</p></footer>
+</main>
+<script>
+'use strict';
+
+/* This repository is already named "reviews". Its root is the reviews directory.
+   Do NOT append another /reviews/ to the GitHub API tree path. */
+const CONFIG = {
+  owner: 'getbestsupplementreview',
+  repository: 'reviews',
+  branch: 'main',
+  siteBase: 'https://getbestsupplementreview.github.io/reviews/'
+};
+
+const listEl = document.getElementById('review-list');
+const countEl = document.getElementById('review-count');
+const statusEl = document.getElementById('status');
+const searchEl = document.getElementById('review-search');
+let reviews = [];
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const specialTitles = {
+  'yu-sleep-reviews-2026': 'YU Sleep Reviews 2026',
+  'igenics': 'iGenics', 'pinealxt': 'PinealXT',
+  'prodentim': 'ProDentim', 'provadent': 'ProVadent',
+  'femicore': 'FemiCore', 'visiflora': 'VisiFlora',
+  'metanail': 'MetaNail', 'circo2': 'CircO2',
+  'echoxen': 'EchoXen', 'goliath-xl-10': 'Goliath XL 10',
+  'tedswoodworking': 'TedsWoodworking'
+};
+
+function titleFromSlug(slug) {
+  if (specialTitles[slug.toLowerCase()]) return specialTitles[slug.toLowerCase()];
+  return slug.split('-').map(word => word ? word[0].toUpperCase() + word.slice(1) : '').join(' ');
+}
+
+function showError(message) {
+  countEl.textContent = 'Unavailable';
+  statusEl.className = 'status error';
+  statusEl.replaceChildren(document.createTextNode(message));
+  const retry = document.createElement('button');
+  retry.className = 'retry';
+  retry.type = 'button';
+  retry.textContent = 'Retry';
+  retry.addEventListener('click', loadReviews);
+  statusEl.appendChild(document.createElement('br'));
+  statusEl.appendChild(retry);
+}
+
+function renderReviews() {
+  const query = searchEl.value.trim().toLowerCase();
+  const filtered = reviews.filter(item =>
+    item.title.toLowerCase().includes(query) || item.slug.toLowerCase().includes(query)
+  );
+  listEl.replaceChildren();
+  filtered.forEach(item => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = item.url;
+    a.textContent = item.title;
+    li.appendChild(a);
+    listEl.appendChild(li);
+  });
+  countEl.textContent = query ? `${filtered.length} of ${reviews.length} Reviews` : `${reviews.length} Reviews`;
+  statusEl.className = 'status';
+  statusEl.textContent = filtered.length ? '' : (reviews.length ? 'No matching reviews found.' : 'No published review folders with an index.html were found.');
+}
+
+async function loadReviews() {
+  countEl.textContent = 'Loading…';
+  statusEl.className = 'status';
+  statusEl.textContent = 'Loading published review folders…';
+  listEl.replaceChildren();
+
+  const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repository}/git/trees/${CONFIG.branch}?recursive=1`;
+  try {
+    const response = await fetch(apiUrl, {
+      headers: { 'Accept': 'application/vnd.github+json' },
+      cache: 'no-store'
+    });
+
+    if (response.status === 404) {
+      throw new Error('GitHub returned 404 for the repository tree. Confirm the repository is public and the branch is main.');
+    }
+    if (response.status === 403 || response.status === 429) {
+      throw new Error('GitHub API rate limit or access restriction (HTTP ' + response.status + '). Please wait and retry.');
+    }
+    if (!response.ok) {
+      throw new Error('GitHub API request failed (HTTP ' + response.status + ').');
+    }
+
+    const data = await response.json();
+    if (!Array.isArray(data.tree)) throw new Error('GitHub returned an unexpected repository tree response.');
+    if (data.truncated) throw new Error('The GitHub repository tree is too large and was truncated.');
+
+    // Match only top-level folders with their own index.html.
+    // The repo root itself represents /reviews/, so there is no extra reviews/ prefix.
+    const slugs = new Set();
+    for (const item of data.tree) {
+      if (item.type !== 'blob') continue;
+      const match = item.path.match(/^([^/]+)\/index\.html$/i);
+      if (!match) continue;
+      const slug = match[1];
+      if (slug.startsWith('.') || slug.toLowerCase() === 'assets') continue;
+      slugs.add(slug);
+    }
+
+    reviews = Array.from(slugs).map(slug => ({
+      slug,
+      title: titleFromSlug(slug) + (slug.toLowerCase().includes('reviews-2026') ? '' : ' Reviews'),
+      url: CONFIG.siteBase + encodeURIComponent(slug) + '/'
+    })).sort((a, b) => a.title.localeCompare(b.title));
+
+    renderReviews();
+  } catch (error) {
+    console.error('Unable to load reviews:', error);
+    showError(error.message || 'Unable to load reviews. Please try again later.');
+  }
+}
+
+searchEl.addEventListener('input', renderReviews);
+loadReviews();
+</script>
+</body>
+</html>
